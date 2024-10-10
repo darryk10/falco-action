@@ -23,7 +23,9 @@ def get_step_name(fired_at, timeline):
 
 def falco_timestamp_to_datetime(timestamp):
     # Trim fractional seconds to 6 digits and replace 'Z' with '+00:00'
-    iso_time_str_fixed = timestamp[:26] + '+00:00'
+    index = timestamp.find('.')
+    
+    iso_time_str_fixed = timestamp[:index] + '+00:00'
 
     # Parse the fixed ISO string
     return datetime.fromisoformat(iso_time_str_fixed)
